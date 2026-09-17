@@ -9,7 +9,7 @@ import time
 import random
 import socket
 import string
-import collections
+import collections.abc as collections
 
 
 try:

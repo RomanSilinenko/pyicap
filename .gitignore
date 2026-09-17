@@ -1,5 +1,40 @@
+```
+# Compiled Python files
 *.pyc
-build
-dist
-MANIFEST
+__pycache__/
 
+# Dependencies
+.venv/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test coverage
+.coverage
+htmlcov/
+.coverage.*
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*
+!env.example
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+```
