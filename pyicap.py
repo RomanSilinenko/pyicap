@@ -9,7 +9,7 @@ import time
 import random
 import socket
 import string
-import collections
+import collections.abc as collections
 
 
 try:
@@ -285,8 +285,13 @@ class BaseICAPRequestHandler(StreamRequestHandler):
 
     def set_icap_response(self, code, message=None):
         """Sets the ICAP response's status line and response code"""
-        self.icap_response = b'ICAP/1.0 ' + str(code).encode('utf-8') + b' ' + \
-            (str.encode(message) if message else self._responses[code][0])
+        if message is None:
+            msg_bytes = self._responses[code][0]
+        elif isinstance(message, bytes):
+            msg_bytes = message
+        else:
+            msg_bytes = message.encode('utf-8')
+        self.icap_response = b'ICAP/1.0 ' + str(code).encode('utf-8') + b' ' + msg_bytes
         self.icap_response_code = code
 
     def set_icap_header(self, header, value):
